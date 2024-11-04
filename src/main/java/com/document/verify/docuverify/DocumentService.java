@@ -1,3 +1,5 @@
+package com.document.verify.docuverify;
+
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -8,11 +10,11 @@ public class DocumentService {
 
     public String initializeTree(List<String> documentData) {
         this.documents = documentData;
-        this.merkelTree = new MerkelTree(documents);
-        return merkelTree.getRootHash();
+        this.merkleTree = new MerkleTree(documents);
+        return merkleTree.getRootHash();
     }
     public List<String> getProofForDocument(int index) {
-        return merkelTree.getProof(index);
+        return merkleTree.getProof(index);
     }
     public boolean verifyDocument(String document , List<String> proof, String rootHash) {
         return DocumentVerifier.verify(document, rootHash,proof);

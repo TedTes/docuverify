@@ -1,10 +1,12 @@
+package com.document.verify.docuverify;
+
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MerkleTree {
     private List<String> leaves;
-    public MerkelTree(List<String>  documents) {
+    public MerkleTree(List<String>  documents) {
         this.leaves = new ArrayList<String>();
       for(String doc: documents) {
         leaves.add(hash(doc));
@@ -26,9 +28,9 @@ public class MerkleTree {
        throw new RuntimeException(e);
     }
    }
-   private String getRootHash() {
-     List<String> currentLevel = leaves;
-     while(currentLevel.size > 1) {
+   public String getRootHash() {
+     List<String> currentLevel = this.leaves;
+     while(currentLevel.size() > 1) {
         currentLevel = buildNextLevel(currentLevel);
      }
      return currentLevel.get(0);
@@ -45,10 +47,10 @@ public class MerkleTree {
     }
     return nextLevel;
    }
-      public List<String> getProof(int index) {
+  public List<String> getProof(int index) {
         List<String> proof = new ArrayList<>();
         int currentIndex = index;
-        List<String> currentLevel = leaves;
+        List<String> currentLevel = this.leaves;
         
         while (currentLevel.size() > 1) {
             List<String> nextLevel = buildNextLevel(currentLevel);
