@@ -2,7 +2,7 @@ import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MerkelTree {
+public class MerkleTree {
     private List<String> leaves;
     public MerkelTree(List<String>  documents) {
         this.leaves = new ArrayList<String>();

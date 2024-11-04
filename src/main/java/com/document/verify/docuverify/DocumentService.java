@@ -3,7 +3,7 @@ import java.util.List;
 
 @Service
 public class DocumentService {
-    private MerkelTree merkelTree;
+    private MerkleTree merkleTree;
     private List<String> documents;
 
     public String initializeTree(List<String> documentData) {
